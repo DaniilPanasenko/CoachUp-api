@@ -1,0 +1,12 @@
+/Users/admin/Projects/CoachUp/CoachUp.BLL/bin/Debug/netcoreapp3.1/CoachUp.BLL.deps.json
+/Users/admin/Projects/CoachUp/CoachUp.BLL/bin/Debug/netcoreapp3.1/CoachUp.BLL.dll
+/Users/admin/Projects/CoachUp/CoachUp.BLL/bin/Debug/netcoreapp3.1/CoachUp.BLL.pdb
+/Users/admin/Projects/CoachUp/CoachUp.BLL/bin/Debug/netcoreapp3.1/CoachUp.DAL.dll
+/Users/admin/Projects/CoachUp/CoachUp.BLL/bin/Debug/netcoreapp3.1/CoachUp.DAL.pdb
+/Users/admin/Projects/CoachUp/CoachUp.BLL/obj/Debug/netcoreapp3.1/CoachUp.BLL.csprojAssemblyReference.cache
+/Users/admin/Projects/CoachUp/CoachUp.BLL/obj/Debug/netcoreapp3.1/CoachUp.BLL.AssemblyInfoInputs.cache
+/Users/admin/Projects/CoachUp/CoachUp.BLL/obj/Debug/netcoreapp3.1/CoachUp.BLL.AssemblyInfo.cs
+/Users/admin/Projects/CoachUp/CoachUp.BLL/obj/Debug/netcoreapp3.1/CoachUp.BLL.csproj.CoreCompileInputs.cache
+/Users/admin/Projects/CoachUp/CoachUp.BLL/obj/Debug/netcoreapp3.1/CoachUp.BLL.csproj.CopyComplete
+/Users/admin/Projects/CoachUp/CoachUp.BLL/obj/Debug/netcoreapp3.1/CoachUp.BLL.dll
+/Users/admin/Projects/CoachUp/CoachUp.BLL/obj/Debug/netcoreapp3.1/CoachUp.BLL.pdb

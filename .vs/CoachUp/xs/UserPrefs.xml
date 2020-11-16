@@ -1,0 +1,80 @@
+﻿<Properties StartupConfiguration="{52FD0B18-67EE-4424-B0AB-B9515FEE6895}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CoachUp.DAL/Context/CoachUpContext.cs">
+    <Files>
+      <File FileName="CoachUp.DAL/Entities/Coach.cs" Line="51" Column="42" />
+      <File FileName="CoachUp.DAL/Entities/Trainee.cs" />
+      <File FileName="CoachUp.DAL/Repositories/CoachRepository.cs" />
+      <File FileName="CoachUp.DAL/Repositories/TraineeRepository.cs" />
+      <File FileName="CoachUp.DAL/Context/CoachUpContext.cs" Line="150" Column="1" />
+      <File FileName="CoachUp.DAL/Repositories/UnitOfWork.cs" />
+      <File FileName="CoachUp.DAL/Interfaces/IRepository.cs" />
+      <File FileName="CoachUp.DAL/Entities/Notification.cs" />
+      <File FileName="CoachUp.DAL/Entities/Sport.cs" />
+      <File FileName="CoachUp.DAL/Repositories/NotificationRepository.cs" />
+      <File FileName="CoachUp.DAL/Repositories/Repository.cs" />
+      <File FileName="CoachUp.DAL/Repositories/SportRepository.cs" />
+      <File FileName="CoachUp.DAL/Entities/Subscribe.cs" />
+      <File FileName="CoachUp.DAL/Entities/User.cs" />
+      <File FileName="CoachUp.DAL/Repositories/SubscribeRepository.cs" />
+      <File FileName="CoachUp.DAL/Migrations/CoachUpContextModelSnapshot.cs" />
+      <File FileName="CoachUp.BLL/Class1.cs" />
+      <File FileName="CoachUp.API/WeatherForecast.cs" />
+      <File FileName="CoachUp.API/Controllers/WeatherForecastController.cs" />
+      <File FileName="CoachUp.DAL/Entities/Career.cs" />
+      <File FileName="CoachUp.DAL/Repositories/CareerRepository.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115131129_Career.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115131129_Career.Designer.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115133733_Career2.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115133733_Career2.Designer.cs" />
+      <File FileName="CoachUp.DAL/Entities/Course.cs" />
+      <File FileName="CoachUp.DAL/Repositories/CourseRepository.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115172516_Course.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115172516_Course.Designer.cs" />
+      <File FileName="CoachUp.DAL/Entities/Member.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115174430_Member.cs" />
+      <File FileName="CoachUp.DAL/Repositories/MemberRepository.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115175408_Members.cs" />
+      <File FileName="CoachUp.DAL/Entities/Training.cs" />
+      <File FileName="CoachUp.DAL/Repositories/TrainingRepository.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115180718_Training.cs" />
+      <File FileName="CoachUp.DAL/Entities/Box.cs" />
+      <File FileName="CoachUp.DAL/Repositories/BoxRepository.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115182048_Box.cs" />
+      <File FileName="CoachUp.DAL/Entities/Media.cs" />
+      <File FileName="CoachUp.DAL/Entities/Motion.cs" />
+      <File FileName="CoachUp.DAL/Repositories/MotionRepository.cs" />
+      <File FileName="CoachUp.DAL/Repositories/MediaRepository.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115185133_MediaMotion.cs" />
+      <File FileName="CoachUp.DAL/Entities/TraineeMotion.cs" />
+      <File FileName="CoachUp.DAL/Repositories/TraineeMotionRepository.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115191014_TraineeMotion.cs" />
+      <File FileName="CoachUp.DAL/Entities/ProffesionalMotion.cs" />
+      <File FileName="CoachUp.DAL/Repositories/ProffesionalMotionRepository.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115192809_ProfMotion.cs" />
+      <File FileName="CoachUp.DAL/Entities/Friend.cs" />
+      <File FileName="CoachUp.DAL/Repositories/FriendRepository.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115194729_Friend.cs" />
+      <File FileName="CoachUp.DAL/Entities/CourseComment.cs" />
+      <File FileName="CoachUp.DAL/Entities/TrainingComment.cs" />
+      <File FileName="CoachUp.DAL/Repositories/CourseCommentRepository.cs" />
+      <File FileName="CoachUp.DAL/Repositories/TrainingCommentRepository.cs" />
+      <File FileName="CoachUp.DAL/Migrations/20201115210815_Comments.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ClassPad">
+        <State name="__root__">
+          <Node name="CoachUp" expanded="True">
+            <Node name="CoachUp.DAL" expanded="True" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.CoachUp.API PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

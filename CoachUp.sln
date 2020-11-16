@@ -1,0 +1,29 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachUp.API", "CoachUp.API\CoachUp.API.csproj", "{52FD0B18-67EE-4424-B0AB-B9515FEE6895}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachUp.BLL", "CoachUp.BLL\CoachUp.BLL.csproj", "{2FC8DC0E-C8CB-479B-BE8F-8F75A3FAC7B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachUp.DAL", "CoachUp.DAL\CoachUp.DAL.csproj", "{C8127748-3881-4EE5-B414-8CA293004292}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52FD0B18-67EE-4424-B0AB-B9515FEE6895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52FD0B18-67EE-4424-B0AB-B9515FEE6895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52FD0B18-67EE-4424-B0AB-B9515FEE6895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52FD0B18-67EE-4424-B0AB-B9515FEE6895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FC8DC0E-C8CB-479B-BE8F-8F75A3FAC7B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC8DC0E-C8CB-479B-BE8F-8F75A3FAC7B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FC8DC0E-C8CB-479B-BE8F-8F75A3FAC7B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FC8DC0E-C8CB-479B-BE8F-8F75A3FAC7B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8127748-3881-4EE5-B414-8CA293004292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8127748-3881-4EE5-B414-8CA293004292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8127748-3881-4EE5-B414-8CA293004292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8127748-3881-4EE5-B414-8CA293004292}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
