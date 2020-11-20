@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/admin/Projects/CoachUp 2/CoachUp.DAL/CoachUp.DAL.csproj": {}
+    "/Users/admin/Projects/CoachUp-api/CoachUp.DAL/CoachUp.DAL.csproj": {}
   },
   "projects": {
-    "/Users/admin/Projects/CoachUp 2/CoachUp.DAL/CoachUp.DAL.csproj": {
+    "/Users/admin/Projects/CoachUp-api/CoachUp.DAL/CoachUp.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/admin/Projects/CoachUp 2/CoachUp.DAL/CoachUp.DAL.csproj",
+        "projectUniqueName": "/Users/admin/Projects/CoachUp-api/CoachUp.DAL/CoachUp.DAL.csproj",
         "projectName": "CoachUp.DAL",
-        "projectPath": "/Users/admin/Projects/CoachUp 2/CoachUp.DAL/CoachUp.DAL.csproj",
+        "projectPath": "/Users/admin/Projects/CoachUp-api/CoachUp.DAL/CoachUp.DAL.csproj",
         "packagesPath": "/Users/admin/.nuget/packages/",
-        "outputPath": "/Users/admin/Projects/CoachUp 2/CoachUp.DAL/obj/",
+        "outputPath": "/Users/admin/Projects/CoachUp-api/CoachUp.DAL/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -40,6 +40,10 @@
         "netcoreapp3.1": {
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
               "version": "[5.0.0, )"
             },

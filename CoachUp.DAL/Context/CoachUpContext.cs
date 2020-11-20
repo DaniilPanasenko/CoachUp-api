@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore.SqlServer;
+
 using CoachUp.DAL.Entities;
 
 namespace CoachUp.DAL.Context
@@ -25,10 +26,16 @@ namespace CoachUp.DAL.Context
                 new DbContextOptionsBuilder(),
                 connectionString).Options;
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+        }
 
         public CoachUpContext() : base(opt)
         {
+            
         }
+
 
         public DbSet<User> Users { get; set; }
 
@@ -70,11 +77,17 @@ namespace CoachUp.DAL.Context
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Trainee>()
+            .HasMany(p => p.Member_in_Courses)
+            .WithOne(p => p.Trainee)
+            .IsRequired()
+            .HasForeignKey(s => s.Trainee_Login);
+
             modelBuilder.Entity<Subscribe>().
                 HasKey(x => new { x.Coach_Login, x.Trainee_Login });
 
             modelBuilder.Entity<Friend>().
-                HasKey(x => new { x.Trainee1_Login, x.Trainee2_Login });
+                HasKey(x => new { x.TraineeOne_Login, x.TraineeTwo_Login });
 
             modelBuilder.Entity<Coach>()
             .HasMany(p => p.Subscribes)
@@ -103,19 +116,31 @@ namespace CoachUp.DAL.Context
             .HasForeignKey(s => s.Member_ID)
             .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Trainee>()
-            .HasMany(p => p.FriendsSend)
-            .WithOne(p => p.Trainee1)
-            .IsRequired()
-            .HasForeignKey(s => s.Trainee1_Login)
-            .OnDelete(DeleteBehavior.NoAction);
+            //modelBuilder.Entity<Trainee>()
+            //.HasMany(p => p.FriendsSend)
+            //.WithOne(p => p.Trainee1)
+            //.IsRequired()
+            //.HasForeignKey(s => s.Trainee1_Login)
+            //.OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Trainee>()
-            .HasMany(p => p.FriendsRequest)
-            .WithOne(p => p.Trainee2)
-            .IsRequired()
-            .HasForeignKey(s => s.Trainee2_Login)
-            .OnDelete(DeleteBehavior.NoAction);
+            //modelBuilder.Entity<Trainee>()
+            //.HasMany(p => p.FriendsRequest)
+            //.WithOne(p => p.Trainee2)
+            //.IsRequired()
+            //.HasForeignKey(s => s.Trainee2_Login)
+            //.OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Friend>()
+                .HasOne(p=>p.Trainee1)
+                .WithMany(t=>t.FriendsSend)
+                .HasForeignKey(t=>t.TraineeOne_Login)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Friend>()
+                .HasOne(p => p.Trainee2)
+                .WithMany(t => t.FriendsRequest)
+                .HasForeignKey(t => t.TraineeTwo_Login)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<User>()
             .HasMany(p => p.CourseComments)

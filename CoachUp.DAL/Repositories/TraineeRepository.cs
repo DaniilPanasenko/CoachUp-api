@@ -2,6 +2,9 @@
 using CoachUp.DAL.Context;
 using CoachUp.DAL.Entities;
 using CoachUp.DAL.Interfaces;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace CoachUp.DAL.Repositories
 {

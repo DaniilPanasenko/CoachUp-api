@@ -10,3 +10,15 @@
 /Users/admin/Projects/CoachUp/CoachUp.DAL/obj/Debug/netcoreapp3.1/CoachUp.DAL.pdb
 /Users/admin/Projects/CoachUp/CoachUp.DAL/obj/Debug/netcoreapp3.1/CoachUp.DAL.genruntimeconfig.cache
 /Users/admin/Projects/CoachUp/CoachUp.DAL/obj/Debug/netcoreapp3.1/CoachUp.DAL.csprojAssemblyReference.cache
+/Users/admin/Projects/CoachUp-api/CoachUp.DAL/bin/Debug/netcoreapp3.1/CoachUp.DAL.deps.json
+/Users/admin/Projects/CoachUp-api/CoachUp.DAL/bin/Debug/netcoreapp3.1/CoachUp.DAL.runtimeconfig.json
+/Users/admin/Projects/CoachUp-api/CoachUp.DAL/bin/Debug/netcoreapp3.1/CoachUp.DAL.runtimeconfig.dev.json
+/Users/admin/Projects/CoachUp-api/CoachUp.DAL/bin/Debug/netcoreapp3.1/CoachUp.DAL.dll
+/Users/admin/Projects/CoachUp-api/CoachUp.DAL/bin/Debug/netcoreapp3.1/CoachUp.DAL.pdb
+/Users/admin/Projects/CoachUp-api/CoachUp.DAL/obj/Debug/netcoreapp3.1/CoachUp.DAL.csprojAssemblyReference.cache
+/Users/admin/Projects/CoachUp-api/CoachUp.DAL/obj/Debug/netcoreapp3.1/CoachUp.DAL.AssemblyInfoInputs.cache
+/Users/admin/Projects/CoachUp-api/CoachUp.DAL/obj/Debug/netcoreapp3.1/CoachUp.DAL.AssemblyInfo.cs
+/Users/admin/Projects/CoachUp-api/CoachUp.DAL/obj/Debug/netcoreapp3.1/CoachUp.DAL.csproj.CoreCompileInputs.cache
+/Users/admin/Projects/CoachUp-api/CoachUp.DAL/obj/Debug/netcoreapp3.1/CoachUp.DAL.dll
+/Users/admin/Projects/CoachUp-api/CoachUp.DAL/obj/Debug/netcoreapp3.1/CoachUp.DAL.pdb
+/Users/admin/Projects/CoachUp-api/CoachUp.DAL/obj/Debug/netcoreapp3.1/CoachUp.DAL.genruntimeconfig.cache

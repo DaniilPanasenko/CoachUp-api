@@ -7,4 +7,10 @@
   <ItemGroup>
     <ProjectReference Include="..\CoachUp.DAL\CoachUp.DAL.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+    <Folder Include="DataTransferObjects\" />
+    <Folder Include="Services\" />
+    <Folder Include="BusinessModels\" />
+  </ItemGroup>
 </Project>

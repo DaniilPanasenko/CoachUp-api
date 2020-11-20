@@ -9,7 +9,7 @@ namespace CoachUp.DAL.Repositories
 {
     public class UnitOfWork : IDisposable
     {
-        private CoachUpContext db { get; set; }
+        public CoachUpContext db { get; set; }
         public UnitOfWork()
         {
             db = new CoachUpContext();
@@ -50,6 +50,7 @@ namespace CoachUp.DAL.Repositories
                 return coachRepository;
             }
         }
+
         private TraineeRepository traineeRepository;
 
         public TraineeRepository Trainees

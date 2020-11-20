@@ -8,16 +8,16 @@ namespace CoachUp.DAL.Entities
     {
         [Required]
         [MaxLength(40)]
-        public string Trainee1_Login { get; set; }
+        public string TraineeOne_Login { get; set; }
 
-        [ForeignKey("Trainee1_Login")]
+        [ForeignKey("TraineeOne_Login")]
         public virtual Trainee Trainee1 { get; set; }
 
         [Required]
         [MaxLength(40)]
-        public string Trainee2_Login { get; set; }
+        public string TraineeTwo_Login { get; set; }
 
-        [ForeignKey("Trainee2_Login")]
+        [ForeignKey("TraineeTwo_Login")]
         public virtual Trainee Trainee2 { get; set; }
 
         [Required]

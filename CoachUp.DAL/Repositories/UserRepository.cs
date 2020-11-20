@@ -2,6 +2,8 @@
 using CoachUp.DAL.Context;
 using CoachUp.DAL.Entities;
 using CoachUp.DAL.Interfaces;
+using System.Linq;
+
 
 namespace CoachUp.DAL.Repositories
 {
@@ -22,5 +24,6 @@ namespace CoachUp.DAL.Repositories
         {
             return db.Users.Find(login);
         }
+
     }
 }

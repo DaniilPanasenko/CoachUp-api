@@ -11,7 +11,7 @@ namespace CoachUp.DAL.Entities
 
         [Required]
         [MaxLength(1000)]
-        public string Messge { get; set; }
+        public string Message { get; set; }
 
         [Required]
         [MaxLength(40)]

@@ -190,20 +190,20 @@ namespace CoachUp.DAL.Migrations
 
             modelBuilder.Entity("CoachUp.DAL.Entities.Friend", b =>
                 {
-                    b.Property<string>("Trainee1_Login")
+                    b.Property<string>("TraineeOne_Login")
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<string>("Trainee2_Login")
+                    b.Property<string>("TraineeTwo_Login")
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<bool>("Accepted")
                         .HasColumnType("bit");
 
-                    b.HasKey("Trainee1_Login", "Trainee2_Login");
+                    b.HasKey("TraineeOne_Login", "TraineeTwo_Login");
 
-                    b.HasIndex("Trainee2_Login");
+                    b.HasIndex("TraineeTwo_Login");
 
                     b.ToTable("Friends");
                 });
@@ -572,7 +572,7 @@ namespace CoachUp.DAL.Migrations
                     b.HasOne("CoachUp.DAL.Entities.CourseComment", "Reply_Comment")
                         .WithMany("Reply_Comments")
                         .HasForeignKey("Reply_Comment_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("CoachUp.DAL.Entities.User", "User")
@@ -592,13 +592,13 @@ namespace CoachUp.DAL.Migrations
                 {
                     b.HasOne("CoachUp.DAL.Entities.Trainee", "Trainee1")
                         .WithMany("FriendsSend")
-                        .HasForeignKey("Trainee1_Login")
+                        .HasForeignKey("TraineeOne_Login")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("CoachUp.DAL.Entities.Trainee", "Trainee2")
                         .WithMany("FriendsRequest")
-                        .HasForeignKey("Trainee2_Login")
+                        .HasForeignKey("TraineeTwo_Login")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -735,7 +735,7 @@ namespace CoachUp.DAL.Migrations
                     b.HasOne("CoachUp.DAL.Entities.TrainingComment", "Reply_Comment")
                         .WithMany("Reply_Comments")
                         .HasForeignKey("Reply_Comment_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("CoachUp.DAL.Entities.Training", "Training")
