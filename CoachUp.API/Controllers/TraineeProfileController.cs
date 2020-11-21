@@ -23,8 +23,8 @@ namespace CoachUp.API.Controllers
             services = new ServiceModule();
         }
 
-        [HttpHead("opentraineeprofile/{login}")]
-        public void OpenTraineeProfile(string login)
+        [HttpHead("openprofile/{login}")]
+        public void OpenProfile(string login)
         {
             HttpContext.Session.SetString("TraineeProfile_Login", login);
         }

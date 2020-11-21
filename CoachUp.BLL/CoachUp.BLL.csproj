@@ -12,5 +12,6 @@
     <Folder Include="DataTransferObjects\" />
     <Folder Include="Services\" />
     <Folder Include="BusinessModels\" />
+    <Folder Include="Infrastructure\Enums\" />
   </ItemGroup>
 </Project>

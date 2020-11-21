@@ -78,5 +78,10 @@ namespace CoachUp.BLL.Services
             db.Save();
             return "OK";
         }
+
+        public bool IsCoach(string login)
+        {
+            return db.Coaches.Get(login) != null;
+        }
     }
 }
