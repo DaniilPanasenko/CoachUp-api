@@ -4,14 +4,16 @@ using CoachUp.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoachUp.DAL.Migrations
 {
     [DbContext(typeof(CoachUpContext))]
-    partial class CoachUpContextModelSnapshot : ModelSnapshot
+    [Migration("20201121212948_XXX")]
+    partial class XXX
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -572,7 +574,8 @@ namespace CoachUp.DAL.Migrations
                     b.HasOne("CoachUp.DAL.Entities.CourseComment", "Reply_Comment")
                         .WithMany("Reply_Comments")
                         .HasForeignKey("Reply_Comment_ID")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("CoachUp.DAL.Entities.User", "User")
                         .WithMany("CourseComments")
@@ -734,7 +737,8 @@ namespace CoachUp.DAL.Migrations
                     b.HasOne("CoachUp.DAL.Entities.TrainingComment", "Reply_Comment")
                         .WithMany("Reply_Comments")
                         .HasForeignKey("Reply_Comment_ID")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("CoachUp.DAL.Entities.Training", "Training")
                         .WithMany()

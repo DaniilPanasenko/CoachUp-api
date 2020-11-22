@@ -159,14 +159,14 @@ namespace CoachUp.DAL.Context
             modelBuilder.Entity<TrainingComment>()
             .HasMany(p => p.Reply_Comments)
             .WithOne(p => p.Reply_Comment)
-            .IsRequired()
+            .IsRequired(false)
             .HasForeignKey(s => s.Reply_Comment_ID)
             .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<CourseComment>()
             .HasMany(p => p.Reply_Comments)
             .WithOne(p => p.Reply_Comment)
-            .IsRequired()
+            .IsRequired(false)
             .HasForeignKey(s => s.Reply_Comment_ID)
             .OnDelete(DeleteBehavior.NoAction);
         }

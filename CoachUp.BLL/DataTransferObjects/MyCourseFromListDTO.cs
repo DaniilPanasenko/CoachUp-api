@@ -6,6 +6,8 @@ namespace CoachUp.BLL.DataTransferObjects
 {
     public class MyCourseFromListDTO
     {
+        public int ID { get; set; }
+
         public string Name { get; set; }
 
         public object Coach { get; set; }
@@ -16,6 +18,7 @@ namespace CoachUp.BLL.DataTransferObjects
 
         public MyCourseFromListDTO(Course course, Trainee trainee)
         {
+            ID = course.ID;
             Name = course.Name;
             Coach = new
             {

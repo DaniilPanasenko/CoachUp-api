@@ -4,14 +4,16 @@ using CoachUp.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoachUp.DAL.Migrations
 {
     [DbContext(typeof(CoachUpContext))]
-    partial class CoachUpContextModelSnapshot : ModelSnapshot
+    [Migration("20201121213135_not_null")]
+    partial class not_null
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

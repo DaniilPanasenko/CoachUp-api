@@ -30,6 +30,7 @@ namespace CoachUp.BLL.DataTransferObjects
 
         public CourseDTO(Course course)
         {
+            ID = course.ID;
             Name = course.Name;
             Description = course.Description;
             CoachName = course.Coach.Name;

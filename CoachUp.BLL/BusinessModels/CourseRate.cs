@@ -10,7 +10,7 @@ namespace CoachUp.BLL.BusinessModels
 
         public CourseRate(Course course)
         {
-            Place = 1;
+            Place = 0;
             Points = 100;
         }
     }

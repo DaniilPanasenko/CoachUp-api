@@ -1,4 +1,5 @@
-﻿using CoachUp.BLL.DataTransferObjects;
+﻿using CoachUp.BLL.BusinessModels;
+using CoachUp.BLL.DataTransferObjects;
 using CoachUp.BLL.Infrastructure;
 using CoachUp.BLL.Infrastructure.Enums;
 using CoachUp.DAL.Entities;
@@ -44,6 +45,11 @@ namespace CoachUp.BLL.Services
             return coursesDTO;
         }
 
+        public CourseDTO GetCourseByID(int id)
+        {
+            return new CourseDTO(db.Courses.Get(id));
+        }
+
         public int AddCourse(CourseDTO courseDTO, string login)
         {
             Course course = new Course
@@ -62,6 +68,43 @@ namespace CoachUp.BLL.Services
         {
             db.Courses.Delete(id);
             db.Save();
+        }
+
+        public void EditCourse(CourseDTO courseDTO)
+        {
+            Course course = db.Courses.Get(courseDTO.ID);
+            course.Name = courseDTO.Name;
+            course.Description = courseDTO.Description;
+            db.Courses.Update(course);
+            db.Save();
+        }
+
+        public void EnterToCourse(string login, int id)
+        {
+            Member member = new Member();
+            member.Course_Id = id;
+            member.Trainee_Login = login;
+            member.Rate = 0;
+            db.Members.Create(member);
+            db.Save();
+        }
+
+        public void LeaveCourse(string login, int id)
+        {
+            int ID = db.Members
+                .Find(x => x.Course_Id == id && x.Trainee_Login == login)
+                .First()
+                .ID;
+            db.Members.Delete(ID);
+            db.Save();
+        }
+
+        public int GetRate(string login, int course_id)
+        {
+            Trainee trainee = db.Trainees.Get(login);
+            Course course = db.Courses.Get(course_id);
+            CourseComplete rate = new CourseComplete(trainee, course);
+            return rate.Percent;
         }
 
         public object FindCourses(
@@ -188,5 +231,6 @@ namespace CoachUp.BLL.Services
             };
         }
 
+        
     }
 }
