@@ -11,8 +11,8 @@ namespace CoachUp.BLL.BusinessModels
 
         public CoachRate(Coach coach)
         {
-            Points = 1000;
-            Place = 3;
+            Points = coach.Subscribes.Count;
         }
+
     }
 }

@@ -16,6 +16,10 @@ namespace CoachUp.BLL.Services
 
         public string Login(UserDTO input_user)
         {
+            if(input_user.Login==null || input_user.Password == null)
+            {
+                return "BadRequest";
+            }
             User user = db.Users.Get(input_user.Login);
             if (user == null)
             {
@@ -30,12 +34,22 @@ namespace CoachUp.BLL.Services
 
         public string Registration(PersonDTO input_user)
         {
+            if (input_user.Login == null ||
+                input_user.Password == null ||
+                input_user.Email==null ||
+                input_user.Name==null ||
+                input_user.Surname==null||
+                input_user.Sex == null ||
+                (input_user.IsCoach ==true &&
+                input_user.Sport_ID==null))
+            {
+                return "BadRequest";
+            }
             User user = db.Users.Get(input_user.Login);
             if (user != null)
             {
                 return "The user with this login already exist";
             }
-
             User user_email = db.Users
                 .Find(x => x.Email == input_user.Email)
                 .FirstOrDefault();
@@ -59,7 +73,7 @@ namespace CoachUp.BLL.Services
                     Name = input_user.Name,
                     Surname = input_user.Surname,
                     User = new_user,
-                    Sport_ID = input_user.Sport_ID,
+                    Sport_ID = (int)input_user.Sport_ID,
                     Sex = input_user.Sex
                 };
                 db.Coaches.Create(coach);

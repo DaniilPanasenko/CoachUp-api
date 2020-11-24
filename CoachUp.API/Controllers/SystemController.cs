@@ -9,6 +9,7 @@ using CoachUp.BLL.Infrastructure;
 using CoachUp.BLL.Services;
 using CoachUp.BLL.DataTransferObjects;
 using Microsoft.AspNetCore.Http;
+using CoachUp.DAL.Entities;
 
 namespace CoachUp.API.Controllers
 {
@@ -30,6 +31,13 @@ namespace CoachUp.API.Controllers
             string login = HttpContext.Session.GetString("User_Login");
             int result = service.GetCountUnreadedMessages(login);
             return result;
+        }
+
+        [HttpGet("sportslist")]
+        public List<string> GetSports()
+        {
+            OtherServices service = new OtherServices(services);
+            return service.GetSports();
         }
     }
 }

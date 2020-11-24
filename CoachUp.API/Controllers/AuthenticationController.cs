@@ -27,7 +27,6 @@ namespace CoachUp.API.Controllers
         [HttpPost("login")]
         public string Login(UserDTO user)
         {
-
             AuthenticationService authentication = new AuthenticationService(services);
             string status = authentication.Login(user);
             if (status == "OK")
@@ -35,7 +34,6 @@ namespace CoachUp.API.Controllers
                 HttpContext.Session.SetString("User_Login", user.Login);
             }
             return status;
-
         }
 
         [HttpPost("regisration")]
@@ -53,7 +51,10 @@ namespace CoachUp.API.Controllers
         [HttpHead("logout")]
         public void LogOut()
         {
-            HttpContext.Session.Remove("User_Login");
+            if (HttpContext.Session.GetString("User_Login") != null)
+            {
+                HttpContext.Session.Remove("User_Login");
+            }
         }
     }
 }

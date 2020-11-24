@@ -33,15 +33,17 @@ namespace CoachUp.API.Controllers
         [HttpDelete("course/{id}")]
         public void DeleteCourse(int id)
         {
+            string login = HttpContext.Session.GetString("User_Login");
             CoursesService service = new CoursesService(services);
-            service.DeleteCourse(id);
+            service.DeleteCourse(id, login);
         }
 
         [HttpPut("course")]
         public void EditCourse(CourseDTO course)
         {
+            string login = HttpContext.Session.GetString("User_Login");
             CoursesService service = new CoursesService(services);
-            service.EditCourse(course);
+            service.EditCourse(course, login);
         }
 
         [HttpHead("entercourse/{id}")]
@@ -60,7 +62,7 @@ namespace CoachUp.API.Controllers
             service.LeaveCourse(login, id);
         }
 
-        [HttpPost("addcomment/{id}")]
+        [HttpPost("comment/{id}")]
         public void AddComment(int id, CommentDTO comment)
         {
             string login = HttpContext.Session.GetString("User_Login");
@@ -70,7 +72,7 @@ namespace CoachUp.API.Controllers
         }
 
         [HttpGet("comments/{id}")]
-        public List<CommentDTO> AddComment(int id, int first, int last)
+        public List<CommentDTO> Comments(int id, int first, int last)
         {
             CommentsService service = new CommentsService(services);
             return service.GetCourseComments(id,first,last);
@@ -84,11 +86,12 @@ namespace CoachUp.API.Controllers
             return service.GetRate(login, id);
         }
 
-        [HttpPost("addtraining/{id}")]
+        [HttpPost("training/{id}")]
         public void AddTraining(TrainingFromListDTO training, int id)
         {
+            string login = HttpContext.Session.GetString("User_Login");
             TrainingsService service = new TrainingsService(services);
-            service.AddTraining(training,id);
+            service.AddTraining(training,id, login);
         }
 
         [HttpGet("trainingslist/{id}")]
@@ -98,11 +101,12 @@ namespace CoachUp.API.Controllers
             return service.TrainingsList(id);
         }
 
-        [HttpPost("trainingssequence")]
+        [HttpPut("trainingssequence")]
         public void ChangeTrainingsSequence(int[] sequence)
         {
+            string login = HttpContext.Session.GetString("User_Login");
             TrainingsService service = new TrainingsService(services);
-            service.ChangeTrainingsSequence(sequence);
+            service.ChangeTrainingsSequence(sequence, login);
         }
     }
 }

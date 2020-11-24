@@ -23,77 +23,74 @@ namespace CoachUp.API.Controllers
             services = new ServiceModule();
         }
 
-        [HttpHead("openprofile/{login}")]
-        public void OpenProfile(string login)
-        {
-            HttpContext.Session.SetString("CoachProfile_Login", login);
-        }
-
-        [HttpGet("info")]
-        public CoachProfileDTO Info()
+        [HttpGet("info/{login}")]
+        public CoachProfileDTO Info(string login)
         {
             CoachProfileService service = new CoachProfileService(services);
-            string login = HttpContext.Session.GetString("CoachProfile_Login");
             CoachProfileDTO result = service.GetInfo(login);
             return result;
         }
 
-        [HttpGet("courses")]
-        public List<CoachCourseFromListDTO> Courses()
+        [HttpGet("courses/{login}")]
+        public List<CoachCourseFromListDTO> Courses(string login)
         {
             CoursesService service = new CoursesService(services);
-            string login = HttpContext.Session.GetString("CoachProfile_Login");
             List<CoachCourseFromListDTO> result = service.GetCoursesByCoach(login);
             return result;
         }
 
-        [HttpGet("subscriberstop20")]
-        public List<ShortSubscriberDTO> SubscribersTop20()
+        [HttpGet("subscriberstop20/{login}")]
+        public List<ShortSubscriberDTO> SubscribersTop20(string login)
         {
             SubscribesService service = new SubscribesService(services);
-            string login = HttpContext.Session.GetString("CoachProfile_Login");
             List<ShortSubscriberDTO> result = service.GetTop20Subscribers(login);
             return result;
         }
 
-        [HttpHead("subscribing")]
-        public void Subscribing()
+        [HttpHead("subscribing/{login}")]
+        public void Subscribing(string login)
         {
             string me = HttpContext.Session.GetString("User_Login");
-            string coach = HttpContext.Session.GetString("CoachProfile_Login");
             SubscribesService service = new SubscribesService(services);
-            service.AddSubscribe(me, coach);
+            service.AddSubscribe(me, login);
         }
 
         [HttpPut("edit")]
         public void Edit(CoachDTO new_me)
         {
-            CoachProfileService service = new CoachProfileService(services);
-            service.EditProfile(new_me);
+            string login = HttpContext.Session.GetString("User_Login");
+            if (login == new_me.Login)
+            {
+                CoachProfileService service = new CoachProfileService(services);
+                service.EditProfile(new_me);
+            }
         }
 
-        [HttpGet("career")]
-        public List<CareerDTO> Career()
+        [HttpGet("career/{login}")]
+        public List<CareerDTO> Career(string login)
         {
-            string coach = HttpContext.Session.GetString("CoachProfile_Login");
             CoachProfileService service = new CoachProfileService(services);
-            return service.GetCareer(coach);
+            return service.GetCareer(login);
         }
 
         [HttpPost("career")]
-        public List<CareerDTO> AddCareer(CareerDTO career)
+        public void AddCareer(CareerDTO career)
         {
-            string coach = HttpContext.Session.GetString("CoachProfile_Login");
-            CoachProfileService service = new CoachProfileService(services);
-            service.AddCareer(career, coach);
-            return service.GetCareer(coach);
+            AuthenticationService authentication = new AuthenticationService(services);
+            string coach = HttpContext.Session.GetString("User_Login");
+            if (authentication.IsCoach(coach))
+            {
+                CoachProfileService service = new CoachProfileService(services);
+                service.AddCareer(career, coach);
+            }
         }
 
         [HttpDelete("career/{id}")]
         public void DeleteCareer(int id)
         {
+            string coach = HttpContext.Session.GetString("User_Login");
             CoachProfileService service = new CoachProfileService(services);
-            service.DeleteCareer(id);
+            service.DeleteCareer(id, coach);
         }
     }
 }

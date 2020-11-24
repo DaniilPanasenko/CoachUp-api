@@ -28,31 +28,44 @@ namespace CoachUp.API.Controllers
         public object Courses()
         {
             string login = HttpContext.Session.GetString("User_Login");
-            AuthenticationService auth = new AuthenticationService(services);
-            CoursesService service = new CoursesService(services);
-            bool isCoach = auth.IsCoach(login);
-            if (isCoach)
+            if (login != null)
             {
-                return service.GetCoursesByCoach(login);
+                AuthenticationService auth = new AuthenticationService(services);
+                CoursesService service = new CoursesService(services);
+                bool isCoach = auth.IsCoach(login);
+                if (isCoach)
+                {
+                    return service.GetCoursesByCoach(login);
+                }
+                return service.GetCoursesByUser(login);
             }
-            return service.GetCoursesByUser(login);
+            return BadRequest();
         }
 
         [HttpGet("coursesbysport/{sport}")]
-        public List<MyCourseFromListDTO> CoursesBySport(string sport)
+        public IActionResult CoursesBySport(string sport)
         {
             CoursesService service = new CoursesService(services);
             string login = HttpContext.Session.GetString("User_Login");
-            List<MyCourseFromListDTO> result = service.GetCoursesByUserAndSport(login, sport);
-            return result;
+            if (login != null)
+            {
+                List<MyCourseFromListDTO> result = service.GetCoursesByUserAndSport(login, sport);
+                return Ok(result);
+            }
+            return BadRequest();
         }
 
         [HttpPost("addcourse")]
         public int AddCourse(CourseDTO course)
         {
+            AuthenticationService auth = new AuthenticationService(services);
             string login = HttpContext.Session.GetString("User_Login");
-            CoursesService service = new CoursesService(services);
-            return service.AddCourse(course, login);
+            if (auth.IsCoach(login))
+            {
+                CoursesService service = new CoursesService(services);
+                return service.AddCourse(course, login);
+            }
+            return 0;
         }
 
         [HttpGet("findcourses")]

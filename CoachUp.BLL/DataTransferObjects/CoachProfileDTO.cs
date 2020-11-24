@@ -20,8 +20,6 @@ namespace CoachUp.BLL.DataTransferObjects
 
         public string Avatar { get; set; }
 
-        public int Count_Subscribers { get; set; }
-
         public string Sport { get; set; }
 
         public CoachRate Rate { get; set; }

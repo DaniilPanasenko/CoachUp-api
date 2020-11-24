@@ -26,14 +26,5 @@ namespace CoachUp.DAL.Entities
         [ForeignKey("Training_ID")]
         public virtual Training Training { get; set; }
 
-        public virtual ICollection<Motion> Motions { get; set; }
-
-        public virtual ICollection<Media> Medias { get; set; }
-
-        public Box()
-        {
-            Motions = new List<Motion>();
-            Medias = new List<Media>();
-        }
     }
 }

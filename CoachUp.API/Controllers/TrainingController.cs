@@ -33,76 +33,70 @@ namespace CoachUp.API.Controllers
         [HttpDelete("training/{id}")]
         public void DeleteTraining(int id)
         {
+            string login = HttpContext.Session.GetString("User_Login");
             TrainingsService service = new TrainingsService(services);
-            service.DeleteTraining(id);
+            service.DeleteTraining(id, login);
         }
 
         [HttpPut("training")]
         public void EditCourse(TrainingDTO training)
         {
+            string login = HttpContext.Session.GetString("User_Login");
             TrainingsService service = new TrainingsService(services);
-            service.EditTraining(training);
+            service.EditTraining(training, login);
         }
 
-        //[HttpHead("entercourse/{id}")]
-        //public void EnterToCourse(int id)
-        //{
-        //    string login = HttpContext.Session.GetString("User_Login");
-        //    CoursesService service = new CoursesService(services);
-        //    service.EnterToCourse(login, id);
-        //}
+        [HttpPost("addcomment/{id}")]
+        public void AddComment(int id, CommentDTO comment)
+        {
+            string login = HttpContext.Session.GetString("User_Login");
+            comment.Login = login;
+            CommentsService service = new CommentsService(services);
+            service.AddTrainingComment(comment, id);
+        }
 
-        //[HttpHead("leavecourse/{id}")]
-        //public void LeaveCourse(int id)
-        //{
-        //    string login = HttpContext.Session.GetString("User_Login");
-        //    CoursesService service = new CoursesService(services);
-        //    service.LeaveCourse(login, id);
-        //}
+        [HttpGet("comments/{id}")]
+        public List<CommentDTO> AddComment(int id, int first, int last)
+        {
+            CommentsService service = new CommentsService(services);
+            return service.GetTrainingComments(id, first, last);
+        }
 
-        //[HttpPost("addcomment/{id}")]
-        //public void AddComment(int id, CommentDTO comment)
-        //{
-        //    string login = HttpContext.Session.GetString("User_Login");
-        //    comment.Login = login;
-        //    CommentsService service = new CommentsService(services);
-        //    service.AddCourseComment(comment, id);
-        //}
+        [HttpGet("boxeslist/{id}")]
+        public BoxDTO[] BoxesList(int id)
+        {
+            BoxesService service = new BoxesService(services);
+            return service.BoxesList(id);
+        }
 
-        //[HttpGet("comments/{id}")]
-        //public List<CommentDTO> AddComment(int id, int first, int last)
-        //{
-        //    CommentsService service = new CommentsService(services);
-        //    return service.GetCourseComments(id, first, last);
-        //}
+        [HttpPut("boxessequence")]
+        public void ChangeBoxesSequence(int[] sequence)
+        {
+            string login = HttpContext.Session.GetString("User_Login");
+            BoxesService service = new BoxesService(services);
+            service.ChangeBoxesSequence(sequence, login);
+        }
 
-        //[HttpGet("mycourserate/{id}")]
-        //public int MyCourseRate(int id)
-        //{
-        //    string login = HttpContext.Session.GetString("User_Login");
-        //    CoursesService service = new CoursesService(services);
-        //    return service.GetRate(login, id);
-        //}
+        [HttpPost("addbox/{id}")]
+        public void AddBox(BoxDTO box, int id)
+        {
+            string login = HttpContext.Session.GetString("User_Login");
+            BoxesService service = new BoxesService(services);
+            service.AddBox(box, id, login);
+        }
 
-        //[HttpPost("addtraining/{id}")]
-        //public void AddTraining(TrainingDTO training, int id)
-        //{
-        //    TrainingsService service = new TrainingsService(services);
-        //    service.AddTraining(training, id);
-        //}
+        [HttpDelete("box/{id}")]
+        public void DeleteBox(int id)
+        {
+            string login = HttpContext.Session.GetString("User_Login");
+            BoxesService service = new BoxesService(services);
+            service.DeleteBox(id, login);
+        }
 
-        //[HttpGet("trainingslist/{id}")]
-        //public TrainingDTO[] TrainingsList(int id)
-        //{
-        //    TrainingsService service = new TrainingsService(services);
-        //    return service.TrainingsList(id);
-        //}
 
-        //[HttpPost("trainingssequence")]
-        //public void ChangeTrainingsSequence(int[] sequence)
-        //{
-        //    TrainingsService service = new TrainingsService(services);
-        //    service.ChangeTrainingsSequence(sequence);
-        //}
+
+
+
+
     }
 }

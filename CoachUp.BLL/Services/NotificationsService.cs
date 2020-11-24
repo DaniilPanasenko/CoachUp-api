@@ -19,23 +19,30 @@ namespace CoachUp.BLL.Services
         public int GetCountUnreadedMessages(string login)
         {
             User user = db.Users.Get(login);
-            return user.Notifications
-                .Where(x => !x.IsRead)
-                .Count();
+            if (user != null)
+            {
+                return user.Notifications
+                    .Where(x => !x.IsRead)
+                    .Count();
+            }
+            return 0;
         }
 
         public void AddNotification(string message, string login)
         {
             User user = db.Users.Get(login);
-            Notification notification = new Notification()
+            if (user != null)
             {
-                Message = message,
-                IsRead = false,
-                DateTime = DateTime.Now,
-                User = user
-            };
-            db.Notifications.Create(notification);
-            db.Save();
+                Notification notification = new Notification()
+                {
+                    Message = message,
+                    IsRead = false,
+                    DateTime = DateTime.Now,
+                    User = user
+                };
+                db.Notifications.Create(notification);
+                db.Save();
+            }
         }
 
     }

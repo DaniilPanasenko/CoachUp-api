@@ -28,6 +28,13 @@ namespace CoachUp.DAL.Repositories
                 db.Set<T>().Remove(entity);
         }
 
+        public void Delete(string login)
+        {
+            T entity = db.Set<T>().Find(login);
+            if (entity != null)
+                db.Set<T>().Remove(entity);
+        }
+
         public IEnumerable<T> Find(Func<T, bool> predicate)
         {
             return db.Set<T>().Where(predicate);
@@ -36,6 +43,11 @@ namespace CoachUp.DAL.Repositories
         public T Get(int id)
         {
             return db.Set<T>().Find(id);
+        }
+
+        public T Get(string login)
+        {
+            return db.Set<T>().Find(login);
         }
 
         public IEnumerable<T> GetAll()

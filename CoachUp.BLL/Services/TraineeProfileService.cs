@@ -1,4 +1,5 @@
-﻿using CoachUp.BLL.DataTransferObjects;
+﻿using CoachUp.BLL.BusinessModels;
+using CoachUp.BLL.DataTransferObjects;
 using CoachUp.BLL.Infrastructure;
 using CoachUp.DAL.Entities;
 using CoachUp.DAL.Repositories;
@@ -18,23 +19,46 @@ namespace CoachUp.BLL.Services
         public TraineeProfileDTO GetInfo(string login)
         {
             Trainee trainee = db.Trainees.Get(login);
-            TraineeProfileDTO profile = new TraineeProfileDTO(trainee);
+            if (trainee != null)
+            {
+                TraineeProfileDTO profile = new TraineeProfileDTO(trainee);
 
-            profile.Count_Friends = trainee.FriendsSend
-                .Where(x => x.Accepted)
-                .Count() +
-                trainee.FriendsRequest
+                profile.Count_Friends = trainee.FriendsSend
                     .Where(x => x.Accepted)
-                    .Count();
+                    .Count() +
+                    trainee.FriendsRequest
+                        .Where(x => x.Accepted)
+                        .Count();
 
-            profile.Sports = trainee.Member_in_Courses
-                .Select(x => x.Course.Coach.Sport.Name)
-                .Distinct()
-                .ToList();
+                profile.Sports = trainee.Member_in_Courses
+                    .Select(x => x.Course.Coach.Sport.Name)
+                    .Distinct()
+                    .ToList();
 
-            profile.Count_Subscribes = trainee.Subscribes.Count();
+                profile.Count_Subscribes = trainee.Subscribes.Count();
 
-            return profile;
+                List<TraineeRate> trainees = db.Trainees
+                    .GetAll()
+                    .Select(x=>new TraineeRate(x))
+                    .OrderByDescending(x=>x.Points)
+                    .ToList();
+                int place = 1;
+                foreach(TraineeRate rate in trainees)
+                {
+                    if(profile.Rate.Points < rate.Points)
+                    {
+                        place++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                profile.Rate.Place = place;
+
+                return profile;
+            }
+            return null;
         }
 
         public void EditProfile(TraineeDTO traineeDTO)

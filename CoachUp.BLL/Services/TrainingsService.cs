@@ -16,68 +16,98 @@ namespace CoachUp.BLL.Services
             db = sm.DB;
         }
 
-        public void AddTraining(TrainingFromListDTO training, int course_id)
+        public void AddTraining(TrainingFromListDTO training, int course_id, string login)
         {
             Course course = db.Courses.Get(course_id);
-            Training new_training = new Training()
+            if (course != null && course.Coach_Login == login)
             {
-                Name = training.Name,
-                Description = training.Description,
-                Course_ID = course_id,
-                Num_in_Course = course.Trainings.Count()
-            };
-            db.Trainings.Create(new_training);
-            db.Save();
+                Training new_training = new Training()
+                {
+                    Name = training.Name,
+                    Description = training.Description,
+                    Course_ID = course_id,
+                    Num_in_Course = course.Trainings.Count()
+                };
+                db.Trainings.Create(new_training);
+                db.Save();
+            }
         }
 
         public TrainingFromListDTO[] TrainingsList(int course_id)
         {
             Course course = db.Courses.Get(course_id);
-            return course.Trainings
-                .OrderBy(x => x.Num_in_Course)
-                .Select(x => new TrainingFromListDTO(x))
-                .ToArray();
+            if (course != null)
+            {
+                return course.Trainings
+                    .OrderBy(x => x.Num_in_Course)
+                    .Select(x => new TrainingFromListDTO(x))
+                    .ToArray();
+            }
+            return null;
         }
 
-        public void ChangeTrainingsSequence(int[] sequence)
+        public void ChangeTrainingsSequence(int[] sequence, string login)
         {
+            bool todo = true;
             for(int i=0; i<sequence.Length; i++)
             {
                 Training training = db.Trainings.Get(sequence[i]);
-                training.Num_in_Course = i;
-                db.Trainings.Update(training);
+                if (training != null && training.Course.Coach_Login == login)
+                {
+                    training.Num_in_Course = i;
+                    db.Trainings.Update(training);
+                }
+                else
+                {
+                    todo = false;
+                }
             }
-            db.Save();
+            if (todo)
+            {
+                db.Save();
+            }
         }
 
         public TrainingDTO Info(int id)
         {
-            return new TrainingDTO(db.Trainings.Get(id));
-        }
-
-        public void DeleteTraining(int id)
-        {
-            int num = db.Trainings.Get(id).Num_in_Course;
-            int course = db.Trainings.Get(id).Course_ID;
-            db.Trainings.Delete(id);
-            List<Training> trainings = db.Trainings
-                .Find(x => x.Course_ID == course && x.Num_in_Course > num)
-                .ToList();
-            foreach(Training tr in trainings)
+            Training training = db.Trainings.Get(id);
+            if (training != null)
             {
-                tr.Num_in_Course--;
-                db.Trainings.Update(tr);
+                return new TrainingDTO(db.Trainings.Get(id));
             }
-            db.Save();
+            return null;
         }
 
-        public void EditTraining(TrainingDTO trainingDTO)
+        public void DeleteTraining(int id, string login)
+        {
+            Training training = db.Trainings.Get(id);
+            if (training != null && training.Course.Coach_Login==login)
+            {
+                int num = training.Num_in_Course;
+                int course = training.Course_ID;
+                db.Trainings.Delete(id);
+                List<Training> trainings = db.Trainings
+                    .Find(x => x.Course_ID == course && x.Num_in_Course > num)
+                    .ToList();
+                foreach (Training tr in trainings)
+                {
+                    tr.Num_in_Course--;
+                    db.Trainings.Update(tr);
+                }
+                db.Save();
+            }
+        }
+
+        public void EditTraining(TrainingDTO trainingDTO, string login)
         {
             Training training = db.Trainings.Get(trainingDTO.ID);
-            training.Name = trainingDTO.Name;
-            training.Description = trainingDTO.Description;
-            db.Trainings.Update(training);
-            db.Save();
+            if (training != null && training.Course.Coach_Login == login)
+            {
+                training.Name = trainingDTO.Name;
+                training.Description = trainingDTO.Description;
+                db.Trainings.Update(training);
+                db.Save();
+            }
         }
 
     }

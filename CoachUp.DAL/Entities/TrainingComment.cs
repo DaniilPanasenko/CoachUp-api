@@ -17,7 +17,7 @@ namespace CoachUp.DAL.Entities
         [Required]
         public DateTime DateTime { get; set; }
 
-        public int Reply_Comment_ID { get; set; }
+        public int? Reply_Comment_ID { get; set; }
 
         [ForeignKey("Reply_Comment_ID")]
         public virtual TrainingComment Reply_Comment { get; set; }

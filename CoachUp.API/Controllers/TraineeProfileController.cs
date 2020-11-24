@@ -23,53 +23,42 @@ namespace CoachUp.API.Controllers
             services = new ServiceModule();
         }
 
-        [HttpHead("openprofile/{login}")]
-        public void OpenProfile(string login)
-        {
-            HttpContext.Session.SetString("TraineeProfile_Login", login);
-        }
-
-        [HttpGet("info")]
-        public TraineeProfileDTO Info()
+        [HttpGet("info/{login}")]
+        public TraineeProfileDTO Info(string login)
         {
             TraineeProfileService service = new TraineeProfileService(services);
-            string login = HttpContext.Session.GetString("TraineeProfile_Login");
             TraineeProfileDTO result = service.GetInfo(login);
             return result;
         }
 
-        [HttpGet("coursesbysport/{sport}")]
-        public List<MyCourseFromListDTO> CoursesBySport(string sport)
+        [HttpGet("coursesbysport/{login}/{sport}")]
+        public List<MyCourseFromListDTO> CoursesBySport(string login, string sport)
         {
             CoursesService service = new CoursesService(services);
-            string login = HttpContext.Session.GetString("TraineeProfile_Login");
             List<MyCourseFromListDTO> result = service.GetCoursesByUserAndSport(login, sport);
             return result;
         }
 
-        [HttpGet("friendstop20")]
-        public List<ShortFriendDTO> FriendsTop20()
+        [HttpGet("friendstop20/{login}")]
+        public List<ShortFriendDTO> FriendsTop20(string login)
         {
             FriendsService service = new FriendsService(services);
-            string login = HttpContext.Session.GetString("TraineeProfile_Login");
-            List<ShortFriendDTO> result = service.GetTop20Friens(login);
+            List<ShortFriendDTO> result = service.GetTop20Friends(login);
             return result;
         }
 
-        [HttpGet("subscribestop20")]
-        public List<ShortSubscribeDTO> SubscribesTop20()
+        [HttpGet("subscribestop20/{login}")]
+        public List<ShortSubscribeDTO> SubscribesTop20(string login)
         {
             SubscribesService service = new SubscribesService(services);
-            string login = HttpContext.Session.GetString("TraineeProfile_Login");
             List<ShortSubscribeDTO> result = service.GetTop20Subscribes(login);
             return result;
         }
 
-        [HttpHead("friendrequest")]
-        public void FriendRequest()
+        [HttpHead("friendrequest/{friend}")]
+        public void FriendRequest(string friend)
         {
             string me = HttpContext.Session.GetString("User_Login");
-            string friend = HttpContext.Session.GetString("TraineeProfile_Login");
             FriendsService service = new FriendsService(services);
             service.AddFriend(me, friend);
         }
@@ -77,8 +66,12 @@ namespace CoachUp.API.Controllers
         [HttpPut("edit")]
         public void Edit(TraineeDTO new_me)
         {
-            TraineeProfileService service = new TraineeProfileService(services);
-            service.EditProfile(new_me);
+            string login = HttpContext.Session.GetString("User_Login");
+            if (login == new_me.Login)
+            {
+                TraineeProfileService service = new TraineeProfileService(services);
+                service.EditProfile(new_me);
+            }
         }
     }
 }

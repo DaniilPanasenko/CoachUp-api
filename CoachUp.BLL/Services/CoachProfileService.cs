@@ -1,4 +1,5 @@
-﻿using CoachUp.BLL.DataTransferObjects;
+﻿using CoachUp.BLL.BusinessModels;
+using CoachUp.BLL.DataTransferObjects;
 using CoachUp.BLL.Infrastructure;
 using CoachUp.DAL.Entities;
 using CoachUp.DAL.Repositories;
@@ -18,8 +19,28 @@ namespace CoachUp.BLL.Services
         public CoachProfileDTO GetInfo(string login)
         {
             Coach coach = db.Coaches.Get(login);
+            if (coach == null)
+            {
+                return null;
+            }
             CoachProfileDTO profile = new CoachProfileDTO(coach);
-            profile.Count_Subscribers = coach.Subscribes.Count();
+            List<CoachRate> coaches = db.Coaches
+                .GetAll()
+                .Select(x => new CoachRate(x))
+                .OrderByDescending(x=>x.Points)
+                .ToList();
+            int place = 1;
+            foreach (CoachRate co in coaches)
+            {
+                if (profile.Rate.Points < co.Points)
+                {
+                    place++;
+                }
+                else
+                {
+                    profile.Rate.Place = place;
+                }
+            }
             return profile;
         }
 
@@ -73,10 +94,17 @@ namespace CoachUp.BLL.Services
             db.Save();
         }
 
-        public void DeleteCareer(int id)
+        public void DeleteCareer(int id, string login)
         {
-            db.Careers.Delete(id);
-            db.Save();
+            Career career = db.Careers.Get(id);
+            if (career != null)
+            {
+                if (career.Coach_Login == login)
+                {
+                    db.Careers.Delete(id);
+                    db.Save();
+                }
+            }
         }
     }
 

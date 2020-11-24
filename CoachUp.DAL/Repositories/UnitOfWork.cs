@@ -15,218 +15,218 @@ namespace CoachUp.DAL.Repositories
             db = new CoachUpContext();
         }
 
-        private UserRepository userRepository;
+        private Repository<User> userRepository;
 
-        public UserRepository Users
+        public Repository<User> Users
         {
             get
             {
                 if (userRepository == null)
-                    userRepository = new UserRepository(db);
+                    userRepository = new Repository<User>(db);
                 return userRepository;
             }
         }
 
-        private SportRepository sportRepository;
+        private Repository<Sport> sportRepository;
 
-        public SportRepository Sports
+        public Repository<Sport> Sports
         {
             get
             {
                 if (sportRepository == null)
-                    sportRepository = new SportRepository(db);
+                    sportRepository = new Repository<Sport>(db);
                 return sportRepository;
             }
         }
 
-        private CoachRepository coachRepository;
+        private Repository<Coach> coachRepository;
 
-        public CoachRepository Coaches
+        public Repository<Coach> Coaches
         {
             get
             {
                 if (coachRepository == null)
-                    coachRepository = new CoachRepository(db);
+                    coachRepository = new Repository<Coach>(db);
                 return coachRepository;
             }
         }
 
-        private TraineeRepository traineeRepository;
+        private Repository<Trainee> traineeRepository;
 
-        public TraineeRepository Trainees
+        public Repository<Trainee> Trainees
         {
             get
             {
                 if (traineeRepository == null)
-                    traineeRepository = new TraineeRepository(db);
+                    traineeRepository = new Repository<Trainee>(db);
                 return traineeRepository;
             }
         }
 
-        private NotificationRepository notificationRepository;
+        private Repository<Notification> notificationRepository;
 
-        public NotificationRepository Notifications
+        public Repository<Notification> Notifications
         {
             get
             {
                 if (notificationRepository == null)
-                    notificationRepository = new NotificationRepository(db);
+                    notificationRepository = new Repository<Notification>(db);
                 return notificationRepository;
             }
         }
 
-        private SubscribeRepository subscribeRepository;
+        private Repository<Subscribe> subscribeRepository;
 
-        public SubscribeRepository Subscribes
+        public Repository<Subscribe> Subscribes
         {
             get
             {
                 if (subscribeRepository == null)
-                    subscribeRepository = new SubscribeRepository(db);
+                    subscribeRepository = new Repository<Subscribe>(db);
                 return subscribeRepository;
             }
         }
 
-        private CareerRepository careerRepository;
+        private Repository<Career> careerRepository;
 
-        public CareerRepository Careers
+        public Repository<Career> Careers
         {
             get
             {
                 if (careerRepository == null)
-                    careerRepository = new CareerRepository(db);
+                    careerRepository = new Repository<Career>(db);
                 return careerRepository;
             }
         }
 
-        private CourseRepository courseRepository;
+        private Repository<Course> courseRepository;
 
-        public CourseRepository Courses
+        public Repository<Course> Courses
         {
             get
             {
                 if (courseRepository == null)
-                    courseRepository = new CourseRepository(db);
+                    courseRepository = new Repository<Course>(db);
                 return courseRepository;
             }
         }
 
-        private MemberRepository memberRepository;
+        private Repository<Member> memberRepository;
 
-        public MemberRepository Members
+        public Repository<Member> Members
         {
             get
             {
                 if (memberRepository == null)
-                    memberRepository = new MemberRepository(db);
+                    memberRepository = new Repository<Member>(db);
                 return memberRepository;
             }
         }
 
-        private TrainingRepository trainingRepository;
+        private Repository<Training> trainingRepository;
 
-        public TrainingRepository Trainings
+        public Repository<Training> Trainings
         {
             get
             {
                 if (trainingRepository == null)
-                    trainingRepository = new TrainingRepository(db);
+                    trainingRepository = new Repository<Training>(db);
                 return trainingRepository;
             }
         }
 
-        private BoxRepository boxRepository;
+        private Repository<Box> boxRepository;
 
-        public BoxRepository Boxes
+        public Repository<Box> Boxes
         {
             get
             {
                 if (boxRepository == null)
-                    boxRepository = new BoxRepository(db);
+                    boxRepository = new Repository<Box>(db);
                 return boxRepository;
             }
         }
 
-        private MotionRepository motionRepository;
+        private Repository<Motion> motionRepository;
 
-        public MotionRepository Motions
+        public Repository<Motion> Motions
         {
             get
             {
                 if (motionRepository == null)
-                    motionRepository = new MotionRepository(db);
+                    motionRepository = new Repository<Motion>(db);
                 return motionRepository;
             }
         }
 
-        private MediaRepository mediaRepository;
+        private Repository<Media> mediaRepository;
 
-        public MediaRepository Medias
+        public Repository<Media> Medias
         {
             get
             {
                 if (mediaRepository == null)
-                    mediaRepository = new MediaRepository(db);
+                    mediaRepository = new Repository<Media>(db);
                 return mediaRepository;
             }
         }
 
-        private TraineeMotionRepository traineeMotionRepository;
+        private Repository<TraineeMotion> traineeMotionRepository;
 
-        public TraineeMotionRepository TraineeMotions
+        public Repository<TraineeMotion> TraineeMotions
         {
             get
             {
                 if (traineeMotionRepository == null)
-                    traineeMotionRepository = new TraineeMotionRepository(db);
+                    traineeMotionRepository = new Repository<TraineeMotion>(db);
                 return traineeMotionRepository;
             }
         }
 
-        private ProffesionalMotionRepository proffesionalMotionRepository;
+        private Repository<ProffesionalMotion> proffesionalMotionRepository;
 
-        public ProffesionalMotionRepository ProffesionalMotions
+        public Repository<ProffesionalMotion> ProffesionalMotions
         {
             get
             {
                 if (proffesionalMotionRepository == null)
-                    proffesionalMotionRepository = new ProffesionalMotionRepository(db);
+                    proffesionalMotionRepository = new Repository<ProffesionalMotion>(db);
                 return proffesionalMotionRepository;
             }
         }
 
-        private FriendRepository friendRepository;
+        private Repository<Friend> friendRepository;
 
-        public FriendRepository Friends
+        public Repository<Friend> Friends
         {
             get
             {
                 if (friendRepository == null)
-                    friendRepository = new FriendRepository(db);
+                    friendRepository = new Repository<Friend>(db);
                 return friendRepository;
             }
         }
 
-        private CourseCommentRepository courseCommentRepository;
+        private Repository<CourseComment> courseCommentRepository;
 
-        public CourseCommentRepository CourseComments
+        public Repository<CourseComment> CourseComments
         {
             get
             {
                 if (courseCommentRepository == null)
-                    courseCommentRepository = new CourseCommentRepository(db);
+                    courseCommentRepository = new Repository<CourseComment>(db);
                 return courseCommentRepository;
             }
         }
 
-        private TrainingCommentRepository trainingCommentRepository;
+        private Repository<TrainingComment> trainingCommentRepository;
 
-        public TrainingCommentRepository TrainingComments
+        public Repository<TrainingComment> TrainingComments
         {
             get
             {
                 if (trainingCommentRepository == null)
-                    trainingCommentRepository = new TrainingCommentRepository(db);
+                    trainingCommentRepository = new Repository<TrainingComment>(db);
                 return trainingCommentRepository;
             }
         }

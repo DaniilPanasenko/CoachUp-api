@@ -20,34 +20,51 @@ namespace CoachUp.BLL.Services
         public List<MyCourseFromListDTO> GetCoursesByUser(string login)
         {
             Trainee trainee = db.Trainees.Get(login);
-            List<Course> courses = trainee.Member_in_Courses
-                .Select(x => x.Course)
-                .ToList();
-            return courses.ConvertAll(x => new MyCourseFromListDTO(x, trainee));
+            if (trainee != null)
+            {
+                List<Course> courses = trainee.Member_in_Courses
+                    .Select(x => x.Course)
+                    .ToList();
+                return courses.ConvertAll(x => new MyCourseFromListDTO(x, trainee));
+            }
+            return null;
         }
 
         public List<MyCourseFromListDTO> GetCoursesByUserAndSport(string login, string sport)
         {
             Trainee trainee = db.Trainees.Get(login);
-            List<Course> courses = trainee.Member_in_Courses
+            if (trainee != null)
+            {
+                List<Course> courses = trainee.Member_in_Courses
                 .Select(x => x.Course)
                 .Where(x => x.Coach.Sport.Name == sport)
                 .ToList();
-            return courses.ConvertAll(x => new MyCourseFromListDTO(x, trainee));
+                return courses.ConvertAll(x => new MyCourseFromListDTO(x, trainee));
+            }
+            return null;
         }
 
         public List<CoachCourseFromListDTO> GetCoursesByCoach(string login)
         {
             Coach coach = db.Coaches.Get(login);
-            List<Course> courses = coach.Courses.ToList();
-            List<CoachCourseFromListDTO> coursesDTO = courses
-                .ConvertAll(x => new CoachCourseFromListDTO(x));
-            return coursesDTO;
+            if (coach != null)
+            {
+                List<Course> courses = coach.Courses.ToList();
+                List<CoachCourseFromListDTO> coursesDTO = courses
+                    .ConvertAll(x => new CoachCourseFromListDTO(x));
+                return coursesDTO;
+            }
+            return null;
         }
 
         public CourseDTO GetCourseByID(int id)
         {
-            return new CourseDTO(db.Courses.Get(id));
+            Course course = db.Courses.Get(id);
+            if (course != null)
+            {
+                return new CourseDTO(db.Courses.Get(id));
+            }
+            return null;
         }
 
         public int AddCourse(CourseDTO courseDTO, string login)
@@ -58,53 +75,75 @@ namespace CoachUp.BLL.Services
                 Description = courseDTO.Description,
                 Coach_Login = login
             };
-            
             db.Courses.Create(course);
             db.Save();
             return course.ID;
         }
 
-        public void DeleteCourse(int id)
+        public void DeleteCourse(int id, string login)
         {
-            db.Courses.Delete(id);
-            db.Save();
+            Course course = db.Courses.Get(login);
+            if (course != null && course.Coach_Login == login)
+            {
+                db.Courses.Delete(id);
+                db.Save();
+            }
         }
 
-        public void EditCourse(CourseDTO courseDTO)
+        public void EditCourse(CourseDTO courseDTO, string login)
         {
             Course course = db.Courses.Get(courseDTO.ID);
-            course.Name = courseDTO.Name;
-            course.Description = courseDTO.Description;
-            db.Courses.Update(course);
-            db.Save();
+            if (course != null && course.Coach_Login == login)
+            {
+                course.Name = courseDTO.Name;
+                course.Description = courseDTO.Description;
+                db.Courses.Update(course);
+                db.Save();
+            }
         }
 
         public void EnterToCourse(string login, int id)
         {
-            Member member = new Member();
-            member.Course_Id = id;
-            member.Trainee_Login = login;
-            member.Rate = 0;
-            db.Members.Create(member);
-            db.Save();
+            Course course = db.Courses.Get(id);
+            Trainee trainee = db.Trainees.Get(login);
+            Member member0 = db.Members
+                .Find(x => x.Trainee_Login == login && x.Course_Id == id)
+                .FirstOrDefault();
+            if (course != null && trainee != null && member0 == null)
+            {
+                Member member = new Member();
+                member.Course_Id = id;
+                member.Trainee_Login = login;
+                member.Rate = 0;
+                db.Members.Create(member);
+                db.Save();
+            }
         }
 
         public void LeaveCourse(string login, int id)
         {
-            int ID = db.Members
-                .Find(x => x.Course_Id == id && x.Trainee_Login == login)
-                .First()
-                .ID;
-            db.Members.Delete(ID);
-            db.Save();
+            Course course = db.Courses.Get(id);
+            Trainee trainee = db.Trainees.Get(login);
+            Member member = db.Members
+                .Find(x => x.Trainee_Login == login && x.Course_Id == id)
+                .FirstOrDefault();
+            if (course != null && trainee != null && member != null)
+            {
+                db.Members.Delete(member.ID);
+                db.Save();
+            }
         }
 
         public int GetRate(string login, int course_id)
         {
             Trainee trainee = db.Trainees.Get(login);
             Course course = db.Courses.Get(course_id);
-            CourseComplete rate = new CourseComplete(trainee, course);
-            return rate.Percent;
+            if (trainee != null && course != null)
+            {
+                CourseComplete rate = new CourseComplete(trainee, course);
+                return rate.Percent;
+            }
+            return 0;
         }
 
         public object FindCourses(
