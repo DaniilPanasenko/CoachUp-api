@@ -78,14 +78,6 @@ namespace CoachUp.API.Controllers
             return service.GetCourseComments(id,first,last);
         }
 
-        [HttpGet("mycourserate/{id}")]
-        public int MyCourseRate(int id)
-        {
-            string login = HttpContext.Session.GetString("User_Login");
-            CoursesService service = new CoursesService(services);
-            return service.GetRate(login, id);
-        }
-
         [HttpPost("training/{id}")]
         public void AddTraining(TrainingFromListDTO training, int id)
         {

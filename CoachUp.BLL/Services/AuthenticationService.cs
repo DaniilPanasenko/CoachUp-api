@@ -41,7 +41,7 @@ namespace CoachUp.BLL.Services
                 input_user.Surname==null||
                 input_user.Sex == null ||
                 (input_user.IsCoach ==true &&
-                input_user.Sport_ID==null))
+                input_user.Sport==null))
             {
                 return "BadRequest";
             }
@@ -73,7 +73,7 @@ namespace CoachUp.BLL.Services
                     Name = input_user.Name,
                     Surname = input_user.Surname,
                     User = new_user,
-                    Sport_ID = (int)input_user.Sport_ID,
+                    Sport_ID = db.Sports.Find(x => x.Name == input_user.Sport).First().ID,
                     Sex = input_user.Sex
                 };
                 db.Coaches.Create(coach);
@@ -96,6 +96,15 @@ namespace CoachUp.BLL.Services
         public bool IsCoach(string login)
         {
             return db.Coaches.Get(login) != null;
+        }
+
+        public string GetAvatar(string login)
+        {
+            if (IsCoach(login))
+            {
+                return db.Coaches.Get(login).Avatar_Link;
+            }
+            return db.Trainees.Get(login).Avatar_Link;
         }
     }
 }

@@ -53,7 +53,7 @@ namespace CoachUp.BLL.BusinessModels
                 {
                     Array.Resize(ref marks, countable_marks);
                 }
-                int cur_size = 2;
+                int current_size = 2;
                 for (int i = 0; i < marks.Length; i++)
                 {
                     int sum = 0;
@@ -61,16 +61,16 @@ namespace CoachUp.BLL.BusinessModels
                     bool end = false;
                     for (int j = i; j < marks.Length; j++)
                     {
-                        if (count < cur_size)
+                        if (count < current_size)
                         {
                             sum += marks[j];
                             count++;
                         }
-                        if (count==cur_size)
+                        if (count==current_size)
                         {
                             end = true;
-                            i = cur_size - 1;
-                            cur_size *= 2;
+                            i = current_size - 1;
+                            current_size *= 2;
                             break;
                         }
                     }
@@ -78,7 +78,7 @@ namespace CoachUp.BLL.BusinessModels
                     {
                         int len = marks.Length;
                         sum = 0;
-                        count = count + cur_size / 2;
+                        count = count + current_size / 2;
                         for (int j = len - count; j < len; j++)
                         {
                             sum += marks[j];
@@ -124,14 +124,17 @@ namespace CoachUp.BLL.BusinessModels
             Friends = new List<MotionComplete>();
             for(int i=0; i<friends_login.Length; i++)
             {
-                Friends.Add(new MotionComplete(friends_marks[i], friends_login[i]));
+                Friends.Add(
+                    new MotionComplete(friends_marks[i], friends_login[i]));
             }
             Friends.OrderBy(x=>x.Summary);
             int place = 1;
             foreach(MotionComplete friend in Friends)
             {
 
-                if(friend.Summary < this.Summary || (friend.Summary == this.Summary && friend.Max <= this.Max))
+                if(friend.Summary < this.Summary ||
+                    (friend.Summary == this.Summary
+                    && friend.Max <= this.Max))
                 {
                         this.Place = place;
                         place++;

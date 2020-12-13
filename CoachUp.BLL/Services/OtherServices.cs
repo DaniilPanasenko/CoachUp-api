@@ -21,5 +21,9 @@ namespace CoachUp.BLL.Services
             return db.Sports.GetAll().Select(x => x.Name).ToList();
         }
 
+        public int GetSportIDByName(string name)
+        {
+            return db.Sports.Find(x => x.Name == name).First().ID;
+        }
     }
 }

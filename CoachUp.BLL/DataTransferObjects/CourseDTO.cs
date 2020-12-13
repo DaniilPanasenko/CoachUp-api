@@ -20,9 +20,7 @@ namespace CoachUp.BLL.DataTransferObjects
 
         public string Sport { get; set; }
 
-        public CourseRate courseRate { get; set; }
-
-        public int courseMember { get; set; }
+        public int CourseMember { get; set; }
 
         public CourseDTO()
         {
@@ -37,8 +35,7 @@ namespace CoachUp.BLL.DataTransferObjects
             CoachSurname = course.Coach.Surname;
             CoachLogin = course.Coach.Login;
             Sport = course.Coach.Sport.Name;
-            courseRate = new CourseRate(course);
-            courseMember = course.Members.Count;
+            CourseMember = course.Members.Count;
         }
     }
 }

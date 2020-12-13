@@ -12,10 +12,6 @@ namespace CoachUp.BLL.DataTransferObjects
 
         public object Coach { get; set; }
 
-        public CourseComplete Complete { get; set; }
-
-        public CourseRate Rate { get; set; }
-
         public MyCourseFromListDTO(Course course, Trainee trainee)
         {
             ID = course.ID;
@@ -25,8 +21,6 @@ namespace CoachUp.BLL.DataTransferObjects
                 Name = course.Coach.Name,
                 Surname = course.Coach.Surname
             };
-            Complete = new CourseComplete(trainee, course);
-            Rate = new CourseRate(course);
         }
     }
 }

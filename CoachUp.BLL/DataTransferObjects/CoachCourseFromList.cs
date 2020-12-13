@@ -11,7 +11,6 @@ namespace CoachUp.BLL.DataTransferObjects
 
         public string Name { get; set; }
 
-        public CourseRate Rate { get; set; }
 
         public int Count_members { get; set; }
 
@@ -19,7 +18,6 @@ namespace CoachUp.BLL.DataTransferObjects
         {
             ID = course.ID;
             Name = course.Name;
-            Rate = new CourseRate(course);
             Count_members = course.Members.Count();
         }
     }

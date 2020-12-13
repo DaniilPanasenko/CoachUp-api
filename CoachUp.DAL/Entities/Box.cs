@@ -26,5 +26,7 @@ namespace CoachUp.DAL.Entities
         [ForeignKey("Training_ID")]
         public virtual Training Training { get; set; }
 
+        public virtual Motion Motion { get; set; }
+
     }
 }

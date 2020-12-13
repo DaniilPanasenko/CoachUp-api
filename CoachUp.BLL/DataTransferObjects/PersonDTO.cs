@@ -13,7 +13,7 @@ namespace CoachUp.BLL.DataTransferObjects
 
         public char Sex { get; set; }
 
-        public int? Sport_ID { get; set; }
+        public string Sport { get; set; }
 
         public bool IsCoach { get; set; }
 

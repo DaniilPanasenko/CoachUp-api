@@ -1,48 +1,30 @@
 ﻿<Properties StartupConfiguration="{52FD0B18-67EE-4424-B0AB-B9515FEE6895}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CoachUp.BLL/BusinessModels/MotionComplete.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CoachUp.BLL/Services/AuthenticationService.cs">
     <Files>
       <File FileName="CoachUp.BLL/Services/FriendsService.cs" Line="48" Column="68" />
-      <File FileName="CoachUp.DAL/Entities/Trainee.cs" />
       <File FileName="CoachUp.DAL/Entities/Friend.cs" />
-      <File FileName="CoachUp.DAL/Context/CoachUpContext.cs" Line="19" Column="35" />
+      <File FileName="CoachUp.DAL/Context/CoachUpContext.cs" />
       <File FileName="CoachUp.BLL/DataTransferObjects/TraineeProfileDTO.cs" />
-      <File FileName="CoachUp.BLL/Services/TraineeProfileService.cs" Line="46" Column="1" />
+      <File FileName="CoachUp.BLL/Services/TraineeProfileService.cs" />
       <File FileName="CoachUp.BLL/Services/SubscribesService.cs" />
       <File FileName="CoachUp.API/Controllers/TraineeProfileController.cs" />
       <File FileName="CoachUp.BLL/DataTransferObjects/ShortSubscribeDTO.cs" />
-      <File FileName="CoachUp.BLL/BusinessModels/CoachRate.cs" Line="16" Column="1" />
-      <File FileName="CoachUp.BLL/BusinessModels/TraineeRate.cs" Line="35" Column="1" />
+      <File FileName="CoachUp.BLL/BusinessModels/CoachRate.cs" />
       <File FileName="CoachUp.BLL/Services/NotificationsService.cs" />
       <File FileName="CoachUp.DAL/Interfaces/IRepository.cs" />
       <File FileName="CoachUp.API/Controllers/SystemController.cs" />
       <File FileName="CoachUp.DAL/Entities/Notification.cs" />
       <File FileName="CoachUp.BLL/DataTransferObjects/PersonDTO.cs" />
-      <File FileName="CoachUp.BLL/Services/AuthenticationService.cs" />
+      <File FileName="CoachUp.BLL/Services/AuthenticationService.cs" Line="76" Column="91" />
       <File FileName="CoachUp.BLL/DataTransferObjects/TraineeDTO.cs" />
       <File FileName="CoachUp.API/Controllers/CoachProfileController.cs" />
-      <File FileName="CoachUp.BLL/DataTransferObjects/CoachProfileDTO.cs" Line="21" Column="43" />
-      <File FileName="CoachUp.BLL/Services/CoachProfileService.cs" Line="46" Column="1" />
+      <File FileName="CoachUp.BLL/DataTransferObjects/CoachProfileDTO.cs" />
+      <File FileName="CoachUp.BLL/Services/CoachProfileService.cs" />
       <File FileName="CoachUp.BLL/Services/CoursesService.cs" />
       <File FileName="CoachUp.BLL/DataTransferObjects/MyCourseFromListDTO.cs" />
       <File FileName="CoachUp.BLL/DataTransferObjects/CoachCourseFromList.cs" />
-      <File FileName="CoachUp.BLL/BusinessModels/CourseRate.cs" />
       <File FileName="CoachUp.BLL/DataTransferObjects/ShortFriendDTO.cs" />
-      <File FileName="CoachUp.BLL/DataTransferObjects/ShortSubscriberDTO.cs" />
-      <File FileName="CoachUp.BLL/DataTransferObjects/CoachDTO.cs" />
-      <File FileName="CoachUp.DAL/Repositories/UnitOfWork.cs" />
-      <File FileName="CoachUp.DAL/Repositories/Repository.cs" />
-      <File FileName="CoachUp.API/Controllers/AuthenticationController.cs" />
-      <File FileName="CoachUp.DAL/Entities/Career.cs" />
-      <File FileName="CoachUp.BLL/DataTransferObjects/CareerDTO.cs" />
-      <File FileName="CoachUp.BLL/DataTransferObjects/UserDTO.cs" />
-      <File FileName="CoachUp.API/Controllers/CoursesListController.cs" />
-      <File FileName="CoachUp.DAL/Entities/Course.cs" />
-      <File FileName="CoachUp.BLL/DataTransferObjects/CourseDTO.cs" />
-      <File FileName="CoachUp.API/Controllers/CourseController.cs" />
-      <File FileName="CoachUp.DAL/Entities/CourseComment.cs" />
-      <File FileName="CoachUp.BLL/DataTransferObjects/CommentDTO.cs" />
       <File FileName="CoachUp.BLL/Services/CommentsService.cs" />
-      <File FileName="CoachUp.BLL/BusinessModels/CourseComplete.cs" />
       <File FileName="CoachUp.BLL/DataTransferObjects/TrainingDTO.cs" />
       <File FileName="CoachUp.DAL/Entities/Training.cs" />
       <File FileName="CoachUp.BLL/Services/TrainingsService.cs" />
@@ -58,13 +40,26 @@
       <File FileName="CoachUp.BLL/DataTransferObjects/BoxDTO.cs" />
       <File FileName="CoachUp.BLL/Services/BoxesService.cs" />
       <File FileName="CoachUp.BLL/DataTransferObjects/TrainingFromListDTO.cs" />
-      <File FileName="CoachUp.BLL/BusinessModels/MotionComplete.cs" Line="75" Column="1" />
-      <File FileName="CoachUp.API/Controllers/MotionController.cs" Line="28" Column="30" />
-      <File FileName="CoachUp.DAL/Entities/TraineeMotion.cs" Line="16" Column="1" />
+      <File FileName="CoachUp.BLL/BusinessModels/MotionComplete.cs" />
+      <File FileName="CoachUp.API/Controllers/MotionController.cs" />
+      <File FileName="CoachUp.DAL/Entities/TraineeMotion.cs" />
       <File FileName="CoachUp.API/Startup.cs" />
-      <File FileName="CoachUp.BLL/Services/MotionService.cs" Line="37" Column="1" />
-      <File FileName="CoachUp.BLL/Services/StatisticService.cs" Line="22" Column="1" />
-      <File FileName="CoachUp.API/Program.cs" Line="16" Column="1" />
+      <File FileName="CoachUp.BLL/Services/MotionService.cs" />
+      <File FileName="CoachUp.BLL/Services/StatisticService.cs" />
+      <File FileName="CoachUp.API/Program.cs" />
+      <File FileName="CoachUp.DAL/Entities/Coach.cs" />
+      <File FileName="CoachUp.DAL/Entities/Member.cs" />
+      <File FileName="CoachUp.DAL/Entities/ProffesionalMotion.cs" />
+      <File FileName="CoachUp.DAL/Entities/Sport.cs" />
+      <File FileName="CoachUp.DAL/Entities/Subscribe.cs" />
+      <File FileName="CoachUp.BLL/DataTransferObjects/CourseDTO.cs" />
+      <File FileName="CoachUp.API/Controllers/CourseController.cs" />
+      <File FileName="CoachUp.API/Controllers/AuthenticationController.cs" />
+      <File FileName="CoachUp.API/Controllers/CoursesListController.cs" />
+      <File FileName="CoachUp.BLL/DataTransferObjects/CoachDTO.cs" />
+      <File FileName="CoachUp.BLL/DataTransferObjects/CommentDTO.cs" />
+      <File FileName="CoachUp.BLL/DataTransferObjects/ShortSubscriberDTO.cs" />
+      <File FileName="CoachUp.DAL/Repositories/Repository.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -74,12 +69,12 @@
               <Node name="Controllers" expanded="True" />
             </Node>
             <Node name="CoachUp.BLL" expanded="True">
-              <Node name="BusinessModels" expanded="True">
-                <Node name="MotionComplete.cs" selected="True" />
-              </Node>
+              <Node name="BusinessModels" expanded="True" />
               <Node name="DataTransferObjects" expanded="True" />
               <Node name="Infrastructure" expanded="True" />
-              <Node name="Services" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="AuthenticationService.cs" selected="True" />
+              </Node>
             </Node>
             <Node name="CoachUp.DAL" expanded="True">
               <Node name="Context" expanded="True" />
@@ -92,7 +87,7 @@
       <Pad Id="ClassPad">
         <State name="__root__">
           <Node name="CoachUp" expanded="True">
-            <Node name="CoachUp.API" selected="True" />
+            <Node name="CoachUp.API" expanded="True" selected="True" />
             <Node name="CoachUp.DAL" expanded="True" />
           </Node>
         </State>
@@ -106,10 +101,7 @@
     <String>/Users/admin/Projects/CoachUp-api</String>
   </Debugger.DebugSourceFolders>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/admin/Projects/CoachUp-api/CoachUp.BLL/BusinessModels/MotionComplete.cs" relfile="CoachUp.BLL/BusinessModels/MotionComplete.cs" line="101" column="1" />
-      <Breakpoint file="/Users/admin/Projects/CoachUp-api/CoachUp.BLL/BusinessModels/MotionComplete.cs" relfile="CoachUp.BLL/BusinessModels/MotionComplete.cs" line="75" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

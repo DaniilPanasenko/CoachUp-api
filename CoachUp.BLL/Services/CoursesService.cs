@@ -134,17 +134,6 @@ namespace CoachUp.BLL.Services
             }
         }
 
-        public int GetRate(string login, int course_id)
-        {
-            Trainee trainee = db.Trainees.Get(login);
-            Course course = db.Courses.Get(course_id);
-            if (trainee != null && course != null)
-            {
-                CourseComplete rate = new CourseComplete(trainee, course);
-                return rate.Percent;
-            }
-            return 0;
-        }
 
         public object FindCourses(
             string sport,
@@ -184,28 +173,16 @@ namespace CoachUp.BLL.Services
                         x.CoachSurname.ToLower().Contains(coach))
                     .ToList();
             }
-            if (rate_min != null)
-            {
-                courses = courses
-                    .Where(x => x.courseRate.Points>=rate_min)
-                    .ToList();
-            }
-            if (rate_max != null)
-            {
-                courses = courses
-                    .Where(x => x.courseRate.Points <= rate_max)
-                    .ToList();
-            }
             if (members_min != null)
             {
                 courses = courses
-                    .Where(x => x.courseMember >= members_min)
+                    .Where(x => x.CourseMember >= members_min)
                     .ToList();
             }
             if (members_max != null)
             {
                 courses = courses
-                    .Where(x => x.courseMember <= members_max)
+                    .Where(x => x.CourseMember <= members_max)
                     .ToList();
             }
             switch (sort)
@@ -232,28 +209,13 @@ namespace CoachUp.BLL.Services
                     if (!desc)
                     {
                         courses = courses
-                            .OrderBy(x => x.courseMember)
+                            .OrderBy(x => x.CourseMember)
                             .ToList();
                     }
                     else
                     {
                         courses = courses
-                            .OrderByDescending(x => x.courseMember)
-                            .ToList();
-                    }
-                    break;
-
-                case SortCourses.Rate:
-                    if (!desc)
-                    {
-                        courses = courses
-                            .OrderBy(x => x.courseRate.Points)
-                            .ToList();
-                    }
-                    else
-                    {
-                        courses = courses
-                            .OrderByDescending(x => x.courseRate.Points)
+                            .OrderByDescending(x => x.CourseMember)
                             .ToList();
                     }
                     break;

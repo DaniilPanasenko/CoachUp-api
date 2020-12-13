@@ -36,7 +36,18 @@ namespace CoachUp.API.Controllers
             return status;
         }
 
-        [HttpPost("regisration")]
+        [HttpGet("userinfo/{login}")]
+        public object GetUserInfo(string login)
+        {
+            AuthenticationService authentication = new AuthenticationService(services);
+                return new
+                {
+                    IsCoach = authentication.IsCoach(login),
+                    Avatar = authentication.GetAvatar(login)
+                };
+        }
+
+        [HttpPost("registration")]
         public string Registration(PersonDTO user)
         {
             AuthenticationService authentication = new AuthenticationService(services);

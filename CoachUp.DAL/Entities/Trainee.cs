@@ -32,10 +32,8 @@ namespace CoachUp.DAL.Entities
 
         public virtual ICollection<Member> Member_in_Courses { get; set; }
 
-        [InverseProperty("Trainee1")]
         public virtual ICollection<Friend> FriendsSend { get; set; }
 
-        [InverseProperty("Trainee2")]
         public virtual ICollection<Friend> FriendsRequest { get; set; }
 
         public Trainee()
